@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/Accutrix/roblox.py.svg?branch=master)](https://travis-ci.org/Accutrix/roblox.py)
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
-[![ROBLOX API Discord](https://img.shields.io/badge/discord-roblox%20api%20chat-blue.svg)](https://discord.gg/Y5Rkzyb)
+[![Accutrix Discord](https://img.shields.io/badge/discord-chat-blue.svg)](https://discord.gg/Y5Rkzyb)
 
 ## About
 Roblox.py is a API wrapper for the Roblox API written in the Python programming language. It was developed in late 2019, and continues to be supported to this day. 
