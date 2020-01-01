@@ -8,6 +8,17 @@ from .http import Http
 from .users import User
 
 
+class GroupRole:
+
+    name = None
+    rank = None
+    type = "GroupRole"
+    
+    def __init__(self, role):
+        self.name = role.Name
+        self.rank = role.Rank
+
+
 class Group:
 
     name = None
@@ -15,7 +26,7 @@ class Group:
     owner = None
     emblemUrl = None
     description = None
-    roles = None
+    roles = []
     type = "Group"
 
     def getAllies(self):
@@ -37,12 +48,13 @@ class Group:
         self.owner = User(data["Owner"]["Id"])
         self.emblemUrl = data["EmblemUrl"]
         self.description = data["Description"]
-        self.roles = data["Roles"]
+        for role in data["Roles"]:
+            self.roles.append(GroupRole(role))
 
 
 class UserGroupStatus(Group):
 
-    rank = 0
+    id = None
     role = None
     isInClan = False
     isPrimary = False
@@ -51,14 +63,8 @@ class UserGroupStatus(Group):
         data = Http.format(Http.sendRequest("http://api.roblox.com/users/" + str(userId) + "/groups"))
         for group in data:
             if group.id == groupId:
-                self.name = data["Name"]
-                self.id = data["Id"]
-                self.owner = User(data["Owner"]["Id"])
-                self.emblemUrl = data["EmblemUrl"]
-                self.description = data["Description"]
-                self.roles = data["Roles"]
-                self.rank = data["Rank"]
-                self.role = data["Role"]
+                self.id = groupId
+                self.role = GroupRole(data["Role"])
                 self.isInClan = data["IsInClan"]
                 self.isPrimary = data["IsPrimary"]
 
