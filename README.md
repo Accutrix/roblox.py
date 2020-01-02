@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/Accutrix/roblox.py.svg?branch=master)](https://travis-ci.org/Accutrix/roblox.py)
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
-[![Accutrix Discord](https://img.shields.io/badge/discord-chat-blue.svg)](https://discord.gg/Y5Rkzyb)
+[![ROBLOX API Discord](https://img.shields.io/badge/discord-roblox%20api%20chat-blue.svg)](https://discord.gg/Y5Rkzyb)
 
 ## About
 Roblox.py is a API wrapper for the Roblox API written in the Python programming language. It was developed in late 2019, and continues to be supported to this day. 
@@ -63,6 +63,7 @@ Roblox.py is a API wrapper for the Roblox API written in the Python programming 
 ##### Methods:
 - getAllies() - gets all the allies of the group (returns an array of "Group" objects)
 - getEnemies() - gets all the enemies of the group (returns an array of "Group" objects)
+- getPosts(sortOrder, limit) - gets all the posts of the group within the limit, and in the given sort order "Asc" or "Desc" (returns an array of "GroupPost" objects) 
 
 #### GroupRole:
 
@@ -77,6 +78,16 @@ Roblox.py is a API wrapper for the Roblox API written in the Python programming 
 - role - the role of the player ("GroupRole" object)
 - isInClan - whether or not the user is in the clan
 - isPrimary - whether or not the group is the user's primary group
+
+#### GroupPost:
+
+##### Properties:
+- id - the ID of the post
+- user - the author of the post ("User" object)
+- role - the role of the author of the post ("GroupRole")
+- body - the body of the post
+- created - when the post was created
+- updated - when the post was last updated
 
 #### User:
 
