@@ -19,6 +19,25 @@ class GroupRole:
         self.rank = role.Rank
 
 
+class GroupPost:
+    
+    id = None
+    user = None
+    role = None
+    body = None
+    created = None
+    updated = None
+    type = "GroupPost"
+
+    def __init__(self, data):
+        self.id = data["id"]
+        self.user = User(data["user"]["userId"])
+        self.role = GroupRole(data["role"])
+        self.body = data["body"]
+        self.created = data["created"]
+        self.updated = data["updated"]
+
+
 class Group:
 
     name = None
@@ -41,6 +60,12 @@ class Group:
             enemies.append(Group(enemy))
         return enemies
 
+    def getPosts(self, sortOrder, limit):
+        posts = []
+        for post in Http.format(Http.sendRequest("https://groups.roblox.com/v2/groups/" + self.id + "/wall/posts?sortOrder=" + sortOrder or "asc" + "&limit=" + str(limit or 100))):
+            posts.append(GroupPost(post))
+        return posts
+
     def __init__(self, groupId):
         data = Http.format(Http.sendRequest("https://api.roblox.com/groups/" + str(groupId)))
         self.name = data["Name"]
@@ -52,7 +77,7 @@ class Group:
             self.roles.append(GroupRole(role))
 
 
-class UserGroupStatus(Group):
+class UserGroupStatus:
 
     id = None
     role = None
