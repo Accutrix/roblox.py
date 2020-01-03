@@ -30,7 +30,7 @@ Roblox.py is a API wrapper for the Roblox API written in the Python programming 
 - id - the AssetId of the asset
 - productId - the product ID of the asset
 - description - the description of the asset
-- assetTypeId
+- assetTypeId - the ID for the type of asset
 - creator - the creator of the asset
 - creatorType - the type of creator of the asset ("User" or "Group")
 - iconImageAssetId - the Asset ID for the icon of the asset
@@ -95,14 +95,15 @@ Roblox.py is a API wrapper for the Roblox API written in the Python programming 
 - id - the User ID of the user
 - username - the username of the user
 - avatarUrl - the url for the avatar of the user
-- avatarFinal
+- avatarFinal - whether or not the current avatar is the final one
 - isOnline - whether or not the user is currently online on the platform
 
 ##### Methods:
 - getFriends() - gets all the friends of the user (returns an array of "User" objects)
 - isFriendsWith(user) - gets the friendship status of the user of the object with the given user (returns a bool)
-- hasAsset(asset) - checks to see if the user has the asset (returns a bool)
+- canManageAsset(asset) - checks whether or not the user can manage the asset (returns a bool)
 - getGroups() - gets all the groups the player is in (returns an array of "UserGroupStatus" objects)
+- hasAsset(asset) - checks to see if the user has the asset (returns a bool)
 - getWornAssets() - gets all the assets that is being worn by the user (returns an array of "Asset" objects)
 
 ## Examples
