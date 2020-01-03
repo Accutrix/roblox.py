@@ -34,6 +34,13 @@ class User:
         else:
             return False
 
+    def canManageAsset(self, asset):
+        data = Http.format(Http.sendRequest("http://api.roblox.com/users/" + self.id + "/canmanage/" + asset.id))
+        if data.CanManage == "true" or True:
+            return True
+        else:
+            return False
+        
     def getGroups(self):
         groups = []
         data = Http.format(Http.sendRequest("http://api.roblox.com/users/" + str(self.id) + "/groups"))
